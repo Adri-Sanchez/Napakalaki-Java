@@ -1,6 +1,6 @@
 # Napakalaki-Java
 
-Programming and Object Oriented Design subject project using Java.
+Programming and Object-Oriented Design project using Java.
 
 Programmed by: Adrián Sánchez Cerrillo
 
