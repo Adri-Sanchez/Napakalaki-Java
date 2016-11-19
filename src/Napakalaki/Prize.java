@@ -13,10 +13,18 @@ public class Prize {
     private int levels;
     private int treasures;
     
+    private void setTreasures( int treasures ){
+        this.treasures = treasures;
+    }
+    
+    private void setLevels( int levels ){
+        this.levels = levels;
+    }
+    
     Prize( int treasures, int levels)
     {
-        this.levels = levels;
-        this.treasures = treasures;
+        setTreasures(treasures);
+        setLevels(levels);
     }
     
     @Override
@@ -26,19 +34,15 @@ public class Prize {
                "\nTreasures = " + Integer.toString(treasures);
     }
     
-    int getTreasures(){
+    public int getTreasures(){
         return treasures;
     }
     
-    int getLevels(){
+    public int getLevels(){
         return levels;
     }
     
-    void setTreasures( int treasures ){
-        this.treasures = treasures;
-    }
     
-    void setLevels( int levels ){
-        this.levels = levels;
-    }
+    
+    
 }

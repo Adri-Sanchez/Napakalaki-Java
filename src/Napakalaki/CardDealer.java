@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,99 +7,134 @@ package Napakalaki;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import static Napakalaki.PruebaNapakalaki.unusedMonsters;
+import java.util.Collections;
 
 /**
  *
  * @author adrisanchez
  */
+public class CardDealer {
+    private static final CardDealer instance = new CardDealer();
+    
+    private ArrayList<Monster>  unusedMonsters;
+    private ArrayList<Monster>  usedMonsters;
+    private ArrayList<Treasure> unusedTreasures;
+    private ArrayList<Treasure> usedTreasures;
 
-public class PruebaNapakalaki {
+    // Singleton
+    
+    private CardDealer(){
+    
+    }
+    
+    public static CardDealer getInstance(){
+        return instance;
+    }
+    
+    // Métodos privados
+    
+    private void initTreasureCardDeck(){
+        // ¡Sí mi amo!
+        unusedTreasures.add(new Treasure("¡Sí mi amo!", 4, TreasureKind.HELMET));
+        
+        //Botas de investigación
+        unusedTreasures.add(new Treasure("Botas de investigación", 3, TreasureKind.SHOES));
+        
+        // Capucha de Cthulhu
+        unusedTreasures.add(new Treasure("Capucha de Cthulhu", 3, TreasureKind.HELMET));
+        
+        // A prueba de babas
+        unusedTreasures.add(new Treasure("A prueba de babas", 2, TreasureKind.ARMOR));
+        
+        // Botas de lluvia ácida
+        unusedTreasures.add(new Treasure("Botas de lluvia ácida", 1, TreasureKind.BOTHHANDS));
+        
+        // Casco minero
+        unusedTreasures.add(new Treasure("Casco minero", 2, TreasureKind.HELMET));
+        
+        // Ametralladora ACME
+        unusedTreasures.add(new Treasure("Ametralladora ACME", 4, TreasureKind.BOTHHANDS));
+        
+        // Camiseta de la ETSIIT
+        unusedTreasures.add(new Treasure("Camiseta de la ETSIIT", 1, TreasureKind.ARMOR));
+        
+        // Clavo de rail ferroviario
+        unusedTreasures.add(new Treasure("Clavo de rail ferroviario", 3, TreasureKind.ONEHAND));
+        
+        // Cuchillo de sushi arcano
+        unusedTreasures.add(new Treasure("Cuchillo de sushi arcano", 2, TreasureKind.ONEHAND));
+        
+        // Fez alópodo
+        unusedTreasures.add(new Treasure("Fez alópodo", 3, TreasureKind.HELMET));
+        
+        // Hacha prehistórica
+        unusedTreasures.add(new Treasure("Hacha prehistórica", 2, TreasureKind.ONEHAND));
+        
+        // El aparato del Pr. Tesla
+        unusedTreasures.add(new Treasure("El aparato del Pr. Tesla", 4, TreasureKind.ARMOR));
+        
+        // Gaita
+        unusedTreasures.add(new Treasure("Gaita", 4, TreasureKind.BOTHHANDS));
+        
+        // Insecticida
+        unusedTreasures.add(new Treasure("Insecticida", 2, TreasureKind.ONEHAND));
+        
+        // Escopeta de 3 cañones
+        unusedTreasures.add(new Treasure("Escopeta de 3 cañones", 4, TreasureKind.BOTHHANDS));
+        
+        // Garabato místico
+        unusedTreasures.add(new Treasure("Garabato místico", 2, TreasureKind.ONEHAND));
+        
+        // La rebeca metálica
+        unusedTreasures.add(new Treasure("La rebeca metálica", 2, TreasureKind.ARMOR));
+        
+        // Lanzallamas
+        unusedTreasures.add(new Treasure("Lanzallamas", 4, TreasureKind.BOTHHANDS));
+        
+        // Necro-comicón
+        unusedTreasures.add(new Treasure("Necro-comicón", 1, TreasureKind.ONEHAND));
+        
+        // Necronomicón
+        unusedTreasures.add(new Treasure("Necronomicón", 5, TreasureKind.BOTHHANDS));
+        
+        // Linterna a 2 manos
+        unusedTreasures.add(new Treasure("Linterna a 2 manos", 3, TreasureKind.BOTHHANDS));
+        
+        // Necro-gnomicón
+        unusedTreasures.add(new Treasure("Necro-gnomicón", 2, TreasureKind.ONEHAND));
+        
+        // Necrotelecom
+        unusedTreasures.add(new Treasure("Necrotelecom", 2, TreasureKind.HELMET));
+        
+        // Mazo de los antiguos
+        unusedTreasures.add(new Treasure("Mazo de los antiguos", 3, TreasureKind.ONEHAND));
+        
+        // Necro-playboycón
+        unusedTreasures.add(new Treasure("Necro-playboycón", 3, TreasureKind.ONEHAND));
+        
+        // Porra preternatural
+        unusedTreasures.add(new Treasure("Porra preternatural", 2, TreasureKind.ONEHAND));
+        
+        // Shogulador
+        unusedTreasures.add(new Treasure("Shogulador", 1, TreasureKind.BOTHHANDS));
+        
+        // Tentáculo de pega
+        unusedTreasures.add(new Treasure("Tentáculo de pega", 2, TreasureKind.HELMET));
+        
+        // Varita de atizamiento
+        unusedTreasures.add(new Treasure("Varita de atizamiento", 3, TreasureKind.ONEHAND));
+        
+        // Zapato deja-amigos
+        unusedTreasures.add(new Treasure("Zapato deja-amigos", 1, TreasureKind.SHOES));
 
-    static ArrayList<Monster> unusedMonsters = new ArrayList();
-    
-    //Devuelve un array de monstruos que contiene aquellos cuyo nivel de combate es superior a 10.
-    static ArrayList<Monster> monsters_levelTen(){
-        ArrayList<Monster> validos = new ArrayList();
-        
-        for (Monster monstruo : unusedMonsters){
-            if( monstruo.getCombatLevel() > 10 )
-                validos.add(monstruo);
-        }
-        
-        return validos;
+
+
+
+
     }
     
-    //Devuelve un array de monstruos cuyo mal rollo implique solo pérdida de niveles
-    static ArrayList<Monster> monsters_LoseLevels(){
-        ArrayList<Monster> validos = new ArrayList();
-        BadConsequence auxiliary_bc;
+    private void initMonsterCardDeck(){
         
-        for (Monster monstruo : unusedMonsters){
-            auxiliary_bc = monstruo.getBadConsequence();
-            
-            if( auxiliary_bc.getLevels() > 0 &&
-                auxiliary_bc.getnHiddenTreasures() == 0 && 
-                auxiliary_bc.getnVisibleTreasures() == 0 &&
-                auxiliary_bc.getDeath() == false )
-            {
-                validos.add(monstruo);
-            }
-            
-        }
-        
-        return validos;
-    }
-    
-    //Devuelve un array de monstruos cuyo buen rollo implique ganancia de más de un nivel
-    static ArrayList<Monster> monsters_GainLevels(){
-        ArrayList<Monster> validos = new ArrayList();
-        Prize auxiliary_prize;
-        
-        for (Monster monstruo : unusedMonsters){
-            auxiliary_prize = monstruo.getPrize();
-            
-            if( auxiliary_prize.getLevels() > 1 ){
-                validos.add(monstruo);
-            }
-        }
-        
-        return validos;
-    }
-    
-    //Devuelve un array de monstruos cuyo mal rollo suponga la perdida de un determinado tipo de tesoro.
-    static ArrayList<Monster> monsters_LoseItems( TreasureKind item_type ){
-        ArrayList<Monster> validos = new ArrayList();
-        
-        BadConsequence auxiliary_bc;
-        boolean found;
-        
-        for (Monster monstruo : unusedMonsters){
-            auxiliary_bc = monstruo.getBadConsequence();
-            found = false;
-            
-            for( int i = 0; i < auxiliary_bc.getSpecificHiddenTreasures().size() && !found; i++ ){
-                if( auxiliary_bc.getSpecificHiddenTreasures().get(i) == item_type ){
-                    validos.add(monstruo);
-                    found = true;
-                }
-            }
-            
-            for( int i = 0; i < auxiliary_bc.getSpecificVisibleTreasures().size() && !found; i++ ){
-                if( auxiliary_bc.getSpecificVisibleTreasures().get(i) == item_type ){
-                    validos.add(monstruo);
-                    found = true;
-                }
-            }
-            
-        }
-        
-        return validos;
-    }
-    
-    //Crea lista de monstruos por defecto del juego.
-    static void CrearMonstruos(){
-           
             //Bicefalo
             BadConsequence badConsequence = new BadConsequence("Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos.", 3, Integer.MAX_VALUE, 0);
             Prize prize = new Prize(2,1);
@@ -209,23 +244,36 @@ public class PruebaNapakalaki {
             badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles",0, Integer.MAX_VALUE, 0);
             prize = new Prize(3,1);
             unusedMonsters.add(new Monster("El gorrón en el umbral", 13, badConsequence, prize));
-               
-        }
-    
-    public static void main(String[] args) {
-       CrearMonstruos();
-       
-       ArrayList<Monster> TEST = monsters_LoseItems(TreasureKind.HELMET);
-       
-       System.out.println(TEST);
-       
-       
-       
+        
     }
     
-     
+    private void shuffleTreasures(){
+        Collections.shuffle(unusedTreasures);
+    }
     
-       
-       
+    private void shuffleMonsters(){
+        Collections.shuffle(unusedMonsters);
+    }
+  
+    // Métodos públicos
     
+    /*public Treasure nextTreasure(){
+    
+    }
+    
+    public Monster nextMonster(){
+    
+    }*/
+    
+    public void giveTreasureBack( Treasure t ){
+        usedTreasures.add(t);
+    }
+    
+    public void giveMonsterBack( Monster m ){
+        usedMonsters.add(m);
+    }
+    
+    /*public void initCards(){
+    
+    }*/
 }

@@ -31,21 +31,27 @@ public class Monster {
     }
     
     
-    String getName(){
+    public String getName(){
         return name;
     }
     
-    int getCombatLevel(){
+    public int getCombatLevel(){
         return combatLevel;
     }
     
-    Prize getPrize(){
+    public Prize getPrize(){
         return prize;
     }
     
-    BadConsequence getBadConsequence(){
+    public BadConsequence getBadConsequence(){
         return badConsequence;
     }
     
+    public int getLevelsGained(){
+        return prize.getLevels();
+    }
     
+    public int getTreasuresGained(){
+        return prize.getTreasures();
+    }
 }

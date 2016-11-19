@@ -11,12 +11,13 @@ import java.util.ArrayList;
  * @author adrisanchez
  */
 public class BadConsequence {
+    private static final int MAXTREASURES = 10;
     private String text;
     private int levels;
     private int nVisibleTreasures;
     private int nHiddenTreasures;
     private boolean death;
-    private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
+    private ArrayList<TreasureKind> specificHiddenTreasures  = new ArrayList();
     private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();
     
     BadConsequence( String text, int levels, int nVisible, int nHidden )
@@ -92,5 +93,25 @@ public class BadConsequence {
     {
         return specificVisibleTreasures;
     }
+    
+    boolean isEmpty(){
+        return (nHiddenTreasures == 0 && nVisibleTreasures == 0 ) ||
+               (specificHiddenTreasures.isEmpty() && specificVisibleTreasures.isEmpty());
+    }
+    
+   /* void substractVisibleTreasure( Treasure t ){
+        // IMPLEMENTACION
+    }
+    
+    void substractHiddenTreasure( Treasure t ){
+        // IMPLEMENTACION
+    }
+    
+    BadConsequence adjustToFitTreasureLists( ArrayList<Treasure> v,
+            ArrayList<Treasure> h){
+    
+        // IMPLEMENTACION
+    }*/
+    
     
 }
